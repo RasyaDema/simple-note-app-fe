@@ -21,17 +21,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Note Taking App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: BlocProvider(
-        create: (context) => NotesBloc(
-          repository: repository,
-        )..add(const LoadNotes()),
-        child: const NoteListScreen(),
+    return BlocProvider(
+      create: (context) => NotesBloc(
+        repository: repository,
+      )..add(const LoadNotes()),
+      child: MaterialApp(
+        title: 'Note Taking App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
+        home: const NoteListScreen(),
       ),
     );
   }
